@@ -1,6 +1,6 @@
 import re
 
-def make_thread(text):
+def make_thread(text, simplify_whitespace=True):
     """
     text: str
     return: List[str]
@@ -8,6 +8,8 @@ def make_thread(text):
     thread = []
     tweet = ""
     punc = "([\.\-,;:\s!\?]+)"
+    if simplify_whitespace:
+        text = re.sub('\s+',' ',text)
     words = re.split(punc, text)
     i,j,breakpoint = 0,0,0
     while i < len(words):
@@ -38,9 +40,3 @@ def make_thread(text):
     #append leftovers to thread
     thread.append(tweet.strip())
     return thread
-
-th = make_thread(text)
-for tweet in th:
-    print(tweet)
-    print(len(tweet))
-    print("---")
