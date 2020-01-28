@@ -1,6 +1,6 @@
 import env
 from worker import *
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 
 app = Flask(__name__)
 app.config.update(
@@ -10,7 +10,7 @@ app.config.update(
 @app.route('/', methods=['GET'])
 def home():
     data = {}
-    return render_template('index.html', data=data, page='index')
+    return render_template('index.html', data=data, page='home')
 
 @app.route('/go', methods=['POST'])
 def go():
@@ -19,6 +19,11 @@ def go():
     tweets = make_thread(text, preserve_whitespace)
     data = {'tweets':tweets}
     return render_template('index.html', data=data, page='go')
+
+@app.route('/alive', methods=['GET'])
+def alive():
+    data = {}
+    return render_template('index.html', data=data, page='alive')
 
 if __name__ == "__main__":
     app.run()
