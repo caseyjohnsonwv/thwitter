@@ -25,6 +25,14 @@
 
             {% endfor %}
 
+        <form class="" action="/auth" method="post">
+            <input type="submit" name="auth_button" value="Login to Twitter">
+        </form>
+
+        {% elif page == 'share' %}
+
+        <p>Share page coming soon!</p>
+
         {% elif page == 'alive' %}
 
         <p>App is alive!</p>
