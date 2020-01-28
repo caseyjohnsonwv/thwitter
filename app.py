@@ -14,8 +14,9 @@ def home():
 
 @app.route('/go', methods=['POST'])
 def go():
-    text = request.get("THREAD_CONTENT")
-    tweets = make_thread(text)
+    text = request.form.get("thread_content")
+    preserve_whitespace = request.form.get("preserve_whitespace")
+    tweets = make_thread(text, preserve_whitespace)
     data = {'tweets':tweets}
     return render_template('index.html', data=data, page='go')
 
