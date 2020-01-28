@@ -9,5 +9,30 @@
     </head>
     <body>
 
+        {% if page == 'home' %}
+
+        <form class="" action="/go" method="post">
+            <textarea name="thread_content" rows="8" cols="80"></textarea>
+            <input type="checkbox" name="preserve_whitespace" value="preserve_whitespace">Preserve whitespace?<br>
+            <input type="submit" name="submit_button" value="Go">
+        </form>
+
+        {% elif page == 'go' %}
+
+            {% for tweet in data.tweets %}
+
+                <p>{{tweet}}</p>
+
+            {% endfor %}
+
+        {% elif page == 'alive' %}
+
+        <p>App is alive!</p>
+
+        {% else %}
+
+        <p>ERROR: app route "{{page}}" not found!</p>
+
+        {% endif %}
     </body>
 </html>
