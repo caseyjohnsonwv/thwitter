@@ -37,9 +37,9 @@ def auth():
 @app.route('/callback', methods=['GET'])
 def callback():
     auth = tweepy.OAuthHandler(env.TWITTER_API_KEY, env.TWITTER_API_SECRET)
-    auth.request_token = session['REQUEST_TOKEN']
-    verifier = request.args.get('oauth_verifier')
     try:
+        auth.request_token = session['REQUEST_TOKEN']
+        verifier = request.args.get('oauth_verifier')
         auth.get_access_token(verifier)
         session['AUTH_TOKEN'],session['AUTH_TOKEN_SECRET'] = auth.access_token, auth.access_token_secret
         redirect_url = '/share'
