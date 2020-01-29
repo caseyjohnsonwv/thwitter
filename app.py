@@ -8,7 +8,7 @@ app.config.update(
     SECRET_KEY = env.APP_SECRET_KEY,
 )
 
-@app.route('/', methods=['GET'])
+@app.route('/home', methods=['GET'])
 def home():
     data = {}
     return render_template('index.html', data=data, page='home')
@@ -57,6 +57,11 @@ def share():
 def alive():
     data = {}
     return render_template('index.html', data=data, page='alive')
+
+@app.route('/', defaults={'path':''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return redirect("/home")
 
 if __name__ == "__main__":
     app.run()
