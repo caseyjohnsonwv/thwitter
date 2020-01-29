@@ -55,8 +55,7 @@ def share():
 
 @app.route('/alive', methods=['GET'])
 def alive():
-    data = {}
-    return render_template('index.html', data=data, page='alive')
+    return "Alive"
 
 @app.route('/', defaults={'path':''})
 @app.route('/<path:path>')
