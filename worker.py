@@ -17,7 +17,7 @@ def make_thread(text, preserve_whitespace=False):
         j = len(tweet)
         # record punctuation marks as tweet breakpoints
         if re.match(punc, words[i]):
-            breakpoint = j + len(words[i])
+            breakpoint = j + len(words[i]) + 1
         # add word to tweet if length permits
         if j + len(words[i]) < 240:
             tweet += words[i]
