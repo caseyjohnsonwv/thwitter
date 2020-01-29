@@ -11,27 +11,34 @@
 
         {% if page == 'home' %}
 
-        <form class="" action="/go" method="post">
-            <textarea name="thread_content" rows="8" cols="80"></textarea>
-            <input type="checkbox" name="preserve_whitespace" value="preserve_whitespace">Preserve whitespace?<br>
-            <input type="submit" name="submit_button" value="Go">
-        </form>
+            <form class="" action="/go" method="post">
+                <textarea name="thread_content" rows="20" cols="40"></textarea>
+                <input type="checkbox" name="preserve_whitespace" value="preserve_whitespace">Preserve whitespace?<br>
+                <input type="submit" name="submit_button" value="Go">
+            </form>
 
         {% elif page == 'go' %}
 
+            <form class="" action="/auth" method="post">
+                <input type="submit" name="auth_button" value="Login to Twitter">
+            </form>
+            <form class="" action="/home" method="get">
+                <input type="submit" name="home_button" value="Start Over">
+            </form>
+
             {% for tweet in data.tweets %}
 
-                <p>{{tweet}}</p>
+                <p style="white-space:pre;">{{tweet}}</p>
 
             {% endfor %}
 
-        <form class="" action="/auth" method="post">
-            <input type="submit" name="auth_button" value="Login to Twitter">
-        </form>
-
         {% elif page == 'share' %}
 
-        <p>Share page coming soon!</p>
+            <p>Share page coming soon!</p>
+
+            <form class="" action="/home" method="get">
+                <input type="submit" name="home_button" value="Start Over">
+            </form>
 
         {% endif %}
     </body>
