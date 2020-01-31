@@ -1,5 +1,6 @@
 import env
-from worker import *
+from oauth_logic import *
+from twitter_thread import *
 from flask import Flask, request, render_template, redirect, session
 
 app = Flask(__name__)
